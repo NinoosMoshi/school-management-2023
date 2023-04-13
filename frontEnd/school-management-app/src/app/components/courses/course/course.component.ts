@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Course } from 'src/app/model/course';
+import { CourseService } from 'src/app/services/course.service';
+import { CreateComponent } from '../course-child/create/create.component';
+import { DeleteComponent } from '../course-child/delete/delete.component';
 
 @Component({
   selector: 'app-course',
@@ -7,9 +12,107 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CourseComponent implements OnInit {
 
-  constructor() { }
+  @ViewChild(CreateComponent) createComponent:CreateComponent;
+  @ViewChild(DeleteComponent) deleteComponent:DeleteComponent;
+
+  courses: Course[] = [];
+  selectedCourse:Course = new Course;
+
+  thePageNumber: number = 1;
+  thePageSize: number = 5;
+  theTotalElements: number = 0;
+
+  // searchMode: boolean = false;
+
+  constructor(private courseService: CourseService,
+              private route: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe(() =>{
+      this.listCourses();
+    })
   }
+
+  listCourses(){
+    let searchMode = this.route.snapshot.paramMap.has('keyword');
+
+    if(searchMode){
+      this.handleSearchCourses();
+    }
+    else{
+      this.handleListCourses();
+    }
+    }
+
+
+  handleListCourses(){
+    this.courseService.getCourseList(this.thePageNumber - 1, this.thePageSize).subscribe({
+      next: response =>{
+        this.courses = response.content;
+        this.thePageNumber = response.number + 1;
+        this.thePageSize = response.size;
+        this.theTotalElements = response.totalElements;
+      },
+      error: err =>{
+        alert('there is an error occure ' + err.message)
+      }
+    })
+  }
+
+
+  handleSearchCourses(){
+    const theKeyword: string = this.route.snapshot.paramMap.get('keyword');
+
+    this.courseService.searchCourses(theKeyword, this.thePageNumber - 1, this.thePageSize).subscribe({
+      next: response =>{
+        this.courses = response.content;
+        this.thePageNumber = response.number + 1;
+        this.thePageSize = response.size;
+        this.theTotalElements = response.totalElements;
+      },
+      error: err =>{
+        alert('there is an error occure ' + err.message)
+      }
+    })
+  }
+
+
+  doSearch(value:string){
+    this.router.navigateByUrl(`/course/${value}`)
+  }
+
+
+
+
+  deleteCourseTemp(){
+    let itemIndex = this.courses.findIndex(item => item.courseId === this.selectedCourse.courseId);
+
+    this.courseService.deleteCourse(this.selectedCourse).subscribe({
+      next: response =>{
+        this.courses.splice(itemIndex, 1);
+        this.listCourses();
+      },
+      error: err =>{
+
+      }
+    })
+
+  }
+
+
+
+  handleCreateCourse(){
+    this.createComponent.showCourseModal();
+  }
+
+
+  handleDeleteCourse(temp:Course){
+    this.selectedCourse = temp;
+    this.deleteComponent.showDeleteModal();
+  }
+
+
+
 
 }

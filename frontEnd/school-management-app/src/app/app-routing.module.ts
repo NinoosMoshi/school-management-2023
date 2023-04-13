@@ -6,8 +6,11 @@ import { InstructorComponent } from './components/instructors/instructor/instruc
 
 const routes: Routes = [
   {path:'course', component:CourseComponent},
+  {path:'course/:keyword', component:CourseComponent},
   {path:'student', component:StudentComponent},
   {path:'instructor', component:InstructorComponent},
+  {path:'**',redirectTo:'/course',pathMatch:'full'},
+  {path:'',redirectTo:'/course',pathMatch:'full'}
 
 ];
 
