@@ -36,6 +36,15 @@ export class CourseService {
 
 
 
+      // http://localhost:8082/courses/create
+      public createCourse(course: Course):Observable<Course>{
+        return this.http.post<Course>(`${environment.backendHost}/courses/create`,course).pipe(
+          map(response => response)
+        )
+      }
+
+
+
 }
 
 
