@@ -24,9 +24,7 @@ export class CreateComponent implements OnInit {
 
   constructor(private childFormGroup: FormBuilder,
               private instructorService: InstructorService,
-              private courseService: CourseService,
-              private router: Router,
-              private location: Location) { }
+              private courseService: CourseService) { }
 
   ngOnInit(): void {
     this.myForm();
@@ -97,7 +95,6 @@ export class CreateComponent implements OnInit {
         next: data =>{
           $('#courseModal').modal('hide');
            this.parentFormGroup.reset();
-           this.router.navigateByUrl("/course");
            window.location.reload();
         },
         error: err =>{
