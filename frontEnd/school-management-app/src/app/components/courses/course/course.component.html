@@ -26,6 +26,7 @@
               <th>Duration</th>
               <th>Description</th>
               <th>Instructor</th>
+              <th>Action</th>
            </tr>
         </thead>
         <tbody>
@@ -36,10 +37,10 @@
               <td>{{temp.courseDescription}}</td>
               <td>{{temp.instructor.firstName}} {{temp.instructor.lastName}}</td>
               <td>
-                <button (click)="handleDeleteCourse(temp)" class="btn btn-danger">
-                   <i class="bi-trash"></i>
-                </button>
+                  <button (click)="handleDeleteCourse(temp)" class="btn btn-danger mx-1"><i class="bi-trash"></i></button>
+                  <button (click)="handleEditCourse(temp)" class="btn btn-success mx-1"><i class="bi bi-pencil-square"></i></button>
               </td>
+
             </tr>
         </tbody>
         <tfoot>
@@ -49,6 +50,7 @@
             <th>Course Duration</th>
             <th>Course Description</th>
             <th>Instructor</th>
+            <th>Action</th>
          </tr>
         </tfoot>
      </table>
@@ -85,4 +87,5 @@
 
 
 <app-create></app-create>
+<app-update [updateData]="selectedCourse"></app-update>
 <app-delete (confirmed)="deleteCourseTemp()" [data]="selectedCourse"></app-delete>

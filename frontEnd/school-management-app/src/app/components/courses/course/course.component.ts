@@ -4,6 +4,8 @@ import { Course } from 'src/app/model/course';
 import { CourseService } from 'src/app/services/course.service';
 import { CreateComponent } from '../course-child/create/create.component';
 import { DeleteComponent } from '../course-child/delete/delete.component';
+import { UpdateComponent } from '../course-child/update/update.component';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-course',
@@ -13,6 +15,7 @@ import { DeleteComponent } from '../course-child/delete/delete.component';
 export class CourseComponent implements OnInit {
 
   @ViewChild(CreateComponent) createComponent:CreateComponent;
+  @ViewChild(UpdateComponent) updateComponent:UpdateComponent;
   @ViewChild(DeleteComponent) deleteComponent:DeleteComponent;
 
   courses: Course[] = [];
@@ -22,7 +25,7 @@ export class CourseComponent implements OnInit {
   thePageSize: number = 5;
   theTotalElements: number = 0;
 
-  // searchMode: boolean = false;
+
 
   constructor(private courseService: CourseService,
               private route: ActivatedRoute,
@@ -32,6 +35,7 @@ export class CourseComponent implements OnInit {
     this.route.paramMap.subscribe(() =>{
       this.listCourses();
     })
+
   }
 
   listCourses(){
@@ -104,6 +108,12 @@ export class CourseComponent implements OnInit {
 
   handleCreateCourse(){
     this.createComponent.showCourseModal();
+  }
+
+  handleEditCourse(temp:Course){
+     this.selectedCourse = Object.assign({}, temp);
+     this.updateComponent.showEditModal();
+
   }
 
 

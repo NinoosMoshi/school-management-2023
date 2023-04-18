@@ -12,6 +12,7 @@ import { CreateComponent } from './components/courses/course-child/create/create
 import { DeleteComponent } from './components/courses/course-child/delete/delete.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UpdateComponent } from './components/courses/course-child/update/update.component';
 
 
 
@@ -24,6 +25,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     NavbarComponent,
     CreateComponent,
     DeleteComponent,
+    UpdateComponent,
   ],
   imports: [
     BrowserModule,

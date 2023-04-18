@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { Course } from 'src/app/model/course';
 import { Instructor } from 'src/app/model/instructor';
 import { CourseService } from 'src/app/services/course.service';
-import { Location } from '@angular/common';
 
 declare var $:any;
 
@@ -32,14 +31,6 @@ export class CreateComponent implements OnInit {
   }
 
 
-  // myForm(){
-  //   this.parentFormGroup = this.childFormGroup.group({
-  //      courseName: ["", Validators.required],
-  //      courseDuration: ["", Validators.required],
-  //      courseDescription: ["", Validators.required],
-  //      instructor: [null, Validators.required]
-  //   })
-  // }
 
   myForm(){
     this.parentFormGroup = this.childFormGroup.group({

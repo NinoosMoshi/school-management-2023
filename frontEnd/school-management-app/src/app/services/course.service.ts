@@ -44,6 +44,13 @@ export class CourseService {
       }
 
 
+      // http://localhost:8082/courses/update/{courseId}
+      public updateCourse(course: Course):Observable<Course>{
+        return this.http.put<Course>(`${environment.backendHost}/update/${course.courseId}`,course).pipe(
+          map(response => response)
+        )
+      }
+
 
 }
 
