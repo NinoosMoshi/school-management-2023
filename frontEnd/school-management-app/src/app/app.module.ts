@@ -13,6 +13,9 @@ import { DeleteComponent } from './components/courses/course-child/delete/delete
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UpdateComponent } from './components/courses/course-child/update/update.component';
+import { UpdateInstructorComponent } from './components/instructors/instructor-child/update-instructor/update-instructor.component';
+import { DeleteInstructorComponent } from './components/instructors/instructor-child/delete-instructor/delete-instructor.component';
+import { CreateInstructorComponent } from './components/instructors/instructor-child/create-instructor/create-instructor.component';
 
 
 
@@ -26,6 +29,9 @@ import { UpdateComponent } from './components/courses/course-child/update/update
     CreateComponent,
     DeleteComponent,
     UpdateComponent,
+    UpdateInstructorComponent,
+    DeleteInstructorComponent,
+    CreateInstructorComponent,
   ],
   imports: [
     BrowserModule,

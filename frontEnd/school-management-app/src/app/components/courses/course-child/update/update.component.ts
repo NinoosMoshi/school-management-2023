@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subject, BehaviorSubject } from 'rxjs';
+import { Course } from 'src/app/model/course';
 import { Instructor } from 'src/app/model/instructor';
+import { CourseService } from 'src/app/services/course.service';
 import { InstructorService } from 'src/app/services/instructor.service';
 
 declare var $:any;
@@ -16,6 +18,8 @@ export class UpdateComponent implements OnInit {
 
   @Input() updateData:any;
 
+
+
   instructors: Instructor[] = [];
 
   defaultInstructor: Instructor;
@@ -24,11 +28,12 @@ export class UpdateComponent implements OnInit {
 
 
 
-  constructor(private childFormGroup: FormBuilder, private instructorService: InstructorService) { }
+  constructor(private childFormGroup: FormBuilder, private instructorService: InstructorService,private courseService:CourseService) { }
 
   ngOnInit(): void {
     this.myForm();
     this.getAllInstructor();
+
   }
 
 

@@ -25,7 +25,7 @@ export class DeleteComponent implements OnInit {
   }
 
 
-  deletrCourseConfirm(){
+  deleteCourseConfirm(){
     this.confirmed.emit();
     $('#deleteModal').modal('hide');
   }

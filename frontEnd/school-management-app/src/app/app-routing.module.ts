@@ -5,10 +5,13 @@ import { StudentComponent } from './components/students/student/student.componen
 import { InstructorComponent } from './components/instructors/instructor/instructor.component';
 
 const routes: Routes = [
+
   {path:'course', component:CourseComponent},
-  {path:'course/:keyword', component:CourseComponent},
   {path:'student', component:StudentComponent},
   {path:'instructor', component:InstructorComponent},
+  {path:'course/:keyword', component:CourseComponent},
+  {path:'instructor/:keyword', component:InstructorComponent},
+
   {path:'**',redirectTo:'/course',pathMatch:'full'},
   {path:'',redirectTo:'/course',pathMatch:'full'}
 
