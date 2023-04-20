@@ -19,7 +19,6 @@ export class UpdateComponent implements OnInit {
   @Input() updateData:any;
 
 
-
   instructors: Instructor[] = [];
 
   defaultInstructor: Instructor;
@@ -40,12 +39,11 @@ export class UpdateComponent implements OnInit {
   myForm(){
     this.parentFormGroup = this.childFormGroup.group({
       data:this.childFormGroup.group({
-        courseName: ["", Validators.required],
+        courseName: [this.updateData.courseName, Validators.required],
         courseDuration: ["", Validators.required],
         courseDescription: ["", Validators.required],
         instructor: [null, Validators.required]
       })
-
     })
   }
 

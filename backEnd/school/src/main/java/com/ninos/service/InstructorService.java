@@ -1,5 +1,6 @@
 package com.ninos.service;
 
+import com.ninos.dto.CourseDTO;
 import com.ninos.dto.InstructorDTO;
 import com.ninos.entity.Instructor;
 import org.springframework.data.domain.Page;
@@ -7,6 +8,8 @@ import org.springframework.data.domain.Page;
 import java.util.List;
 
 public interface InstructorService {
+
+    Page<InstructorDTO> loadAllInstructors(int page, int size);
 
     Instructor loadInstructorById(Long instructorId);
 

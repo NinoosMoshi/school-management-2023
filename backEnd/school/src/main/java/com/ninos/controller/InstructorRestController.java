@@ -21,7 +21,15 @@ public class InstructorRestController {
     private final CourseService courseService;
     private final UserService userService;
 
-    @GetMapping
+
+    @GetMapping("/all-instructors")
+    public Page<InstructorDTO> getAllInstructorsPagination(@RequestParam(name = "page", defaultValue = "0") int page,
+                                                           @RequestParam(name = "size", defaultValue = "5") int size){
+        return instructorService.loadAllInstructors(page, size);
+    }
+
+
+    @GetMapping("/search")
     public Page<InstructorDTO> searchInstructors(@RequestParam(name = "keyword", defaultValue = "") String keyword,
                                                  @RequestParam(name = "page", defaultValue = "0") int page,
                                                  @RequestParam(name = "size", defaultValue = "5") int size

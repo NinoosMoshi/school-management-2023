@@ -13,7 +13,7 @@
 
     <div class="col-lg-6">
       <div class="input-group d-flex justify-content-end">
-        <button (click)="handleCreateCourse()"  class="btn btn-primary">New Course</button>
+        <button (click)="handleCreateCourse()" class="btn btn-primary">New Course</button>
       </div>
     </div>
 
@@ -87,5 +87,5 @@
 
 
 <app-create></app-create>
-<app-update [updateData]="selectedCourse"></app-update>
+<app-update [updateData]="selectedCourse" ></app-update>
 <app-delete (confirmed)="deleteCourseTemp()" [data]="selectedCourse"></app-delete>

@@ -31,6 +31,12 @@ public class InstructorServiceImpl implements InstructorService {
     private final CourseService courseService;
 
 
+    @Override
+    public Page<InstructorDTO> loadAllInstructors(int page, int size) {
+        PageRequest pageRequest = PageRequest.of(page, size);
+        Page<Instructor> instructorsPage = instructorDao.findAll(pageRequest);
+        return new PageImpl<>(instructorsPage.getContent().stream().map(instructor -> instructorMapper.fromInstructor(instructor)).collect(Collectors.toList()),pageRequest, instructorsPage.getTotalElements());
+    }
 
     @Override
     public Instructor loadInstructorById(Long instructorId) {
