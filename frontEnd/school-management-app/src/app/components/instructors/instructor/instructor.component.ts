@@ -3,6 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Instructor } from 'src/app/model/instructor';
 import { DeleteInstructorComponent } from '../instructor-child/delete-instructor/delete-instructor.component';
+import { CreateInstructorComponent } from '../instructor-child/create-instructor/create-instructor.component';
 
 
 @Component({
@@ -12,6 +13,7 @@ import { DeleteInstructorComponent } from '../instructor-child/delete-instructor
 })
 export class InstructorComponent implements OnInit {
 
+  @ViewChild(CreateInstructorComponent) createInstructorComponent:CreateInstructorComponent;
   @ViewChild(DeleteInstructorComponent) deleteInstructorComponent:DeleteInstructorComponent;
 
   instructors:Instructor[] = [];
@@ -81,6 +83,10 @@ export class InstructorComponent implements OnInit {
     this.router.navigateByUrl(`/instructor/${value}`)
   }
 
+
+  handleCreateInstructor(){
+    this.createInstructorComponent.showInstructorModal();
+  }
 
 
   handleDeleteInstructor(temp:Instructor){

@@ -50,7 +50,7 @@ public class InstructorRestController {
     }
 
 
-    @PostMapping
+    @PostMapping("/create")
     public InstructorDTO saveInstructor(@RequestBody InstructorDTO instructorDTO){
         User user = userService.loadUserByEmail(instructorDTO.getUser().getEmail());
         if (user != null) throw new RuntimeException("Email Already Exist");

@@ -1,1 +1,139 @@
-<p>create-instructor works!</p>
+
+<div class="modal fade" id="instructorModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Instructor Information</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+         <div class="container">
+           <div class="row">
+             <div class="col-12">
+
+
+                <form #f="ngForm"  (ngSubmit)="formSubmit()" [formGroup]="parentFormGroup" >
+                  <div formGroupName="data">
+                  <div class="mb-3">
+                    <label for="firstName" class="col-form-label">First Name:</label>
+                    <input type="text"
+                     class="form-control"
+                     formControlName="firstName"
+                     id="firstName"
+                     name="firstName"
+                    >
+                  </div>
+                   <!-- start name validation -->
+                      <div *ngIf="firstName?.invalid && (firstName?.dirty || firstName?.touched)">
+                        <div *ngIf="firstName?.errors?.['required']" class="alert alert-danger"  class="alert alert-danger" role="alert">
+                          First Name Is Required
+                        </div>
+                      </div>
+                    <!-- end name validation -->
+
+
+
+                  <div class="mb-3">
+                    <label for="lastName" class="col-form-label">Last Name:</label>
+                    <input type="text"
+                     class="form-control"
+                     formControlName="lastName"
+                     id="lastName"
+                     name="lastName" >
+                  </div>
+                  <!-- start name validation -->
+                    <div *ngIf="lastName?.invalid && (lastName?.dirty || lastName?.touched)">
+                      <div *ngIf="lastName?.errors?.['required']" class="alert alert-danger"  class="alert alert-danger" role="alert">
+                        Last Name Is Required
+                      </div>
+                    </div>
+                  <!-- end name validation -->
+
+
+
+
+                  <div class="mb-3">
+                    <label for="summary" class="col-form-label">Summary:</label>
+                    <textarea class="form-control"
+                     formControlName="summary"
+                     id="summary"
+                     rows="3" cols="57"
+                     name="summary"
+
+                     >
+                    </textarea>
+                  </div>
+                   <!-- start name validation -->
+                      <div *ngIf="summary?.invalid && (summary?.dirty || summary?.touched)">
+                        <div *ngIf="summary?.errors?.['required']" class="alert alert-danger"  class="alert alert-danger" role="alert">
+                          Summary Is Required
+                        </div>
+                      </div>
+                    <!-- end name validation -->
+
+
+                    <div formGroupName="user">
+                    <div class="mb-3">
+                      <label for="email" class="col-form-label">Email:</label>
+                      <input type="email"
+                       class="form-control"
+                       formControlName="email"
+                       id="email"
+                       name="email" >
+                    </div>
+                    <!-- start name validation -->
+                      <div *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+                        <div *ngIf="email?.errors?.['required']" class="alert alert-danger"  class="alert alert-danger" role="alert">
+                          Email Is Required
+                        </div>
+                        <div  *ngIf="email?.errors?.['pattern']" class="alert alert-danger" role="alert">
+                          Invalid Email
+                        </div>
+                      </div>
+                    <!-- end name validation -->
+
+
+                    <div class="mb-3">
+                      <label for="password" class="col-form-label">Password:</label>
+                      <input type="password"
+                       class="form-control"
+                       formControlName="password"
+                       id="password"
+                       name="password" >
+                    </div>
+                    <!-- start name validation -->
+                      <div *ngIf="password?.invalid && (password?.dirty || password?.touched)">
+                        <div *ngIf="password?.errors?.['required']" class="alert alert-danger"  class="alert alert-danger" role="alert">
+                          Password Is Required
+                        </div>
+                      </div>
+                    <!-- end name validation -->
+
+                  </div>
+
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button [disabled]="!f.valid" type="submit" class="btn btn-primary">Save Instructor</button>
+                  </div>
+
+                </div>
+                </form>
+
+
+
+
+             </div>
+
+           </div>
+         </div>
+
+
+
+      </div>
+
+
+    </div>
+  </div>
+</div>
+

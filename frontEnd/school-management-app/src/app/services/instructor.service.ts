@@ -43,6 +43,15 @@ export class InstructorService {
   }
 
 
+  // http://localhost:8082/instructors/create
+  public createInstructor(instructor: Instructor):Observable<Instructor>{
+    return this.http.post<Instructor>(`${environment.backendHost}/instructors/create`,instructor).pipe(
+      map(response => response)
+    )
+  }
+
+
+
 }
 
 

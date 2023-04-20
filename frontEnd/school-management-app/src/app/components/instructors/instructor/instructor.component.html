@@ -13,7 +13,7 @@
 
     <div class="col-lg-6">
       <div class="input-group d-flex justify-content-end">
-        <button  class="btn btn-primary">Add New Course</button>
+        <button (click)="handleCreateInstructor()"  class="btn btn-primary">New Instructor</button>
       </div>
     </div>
 
@@ -80,6 +80,8 @@
   </div> <!-- end row -->
 </div>  <!-- end container -->
 
+
+<app-create-instructor></app-create-instructor>
 <app-delete-instructor (confirmed)="deleteInstructorTemp()" [instructorData]="selectedInstructor"></app-delete-instructor>
 
 

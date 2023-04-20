@@ -79,8 +79,8 @@ export class CreateComponent implements OnInit {
       this.parentFormGroup.markAllAsTouched();
     }
     else{
-      let employeeData = this.parentFormGroup.controls['data'].value;
-      this.course = employeeData
+      let courseData = this.parentFormGroup.controls['data'].value;
+      this.course = courseData
 
       this.courseService.createCourse(this.course).subscribe({
         next: data =>{
