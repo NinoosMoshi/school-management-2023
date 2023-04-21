@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Instructor } from 'src/app/model/instructor';
 import { InstructorService } from 'src/app/services/instructor.service';
+import { UserService } from 'src/app/services/user.service';
+import { EmailExistsValidator } from 'src/app/validators/email-exists-validator';
 
 declare var $:any;
 
@@ -15,7 +17,7 @@ export class CreateInstructorComponent implements OnInit {
   parentFormGroup: FormGroup;
   instructor:Instructor = new Instructor;
 
-  constructor(private childFormGroup: FormBuilder, private instructorService: InstructorService) { }
+  constructor(private childFormGroup: FormBuilder, private instructorService: InstructorService, private userService:UserService) { }
 
   ngOnInit(): void {
     this.myForm();
@@ -29,7 +31,7 @@ export class CreateInstructorComponent implements OnInit {
         lastName: ["", Validators.required],
         summary: ["", Validators.required],
         user:this.childFormGroup.group({
-          email: ["",[Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
+          email: ["",[Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")], [EmailExistsValidator.validate(this.userService)]],
           password: ["", Validators.required]
         })
 

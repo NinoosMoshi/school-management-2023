@@ -90,6 +90,9 @@
                         <div  *ngIf="email?.errors?.['pattern']" class="alert alert-danger" role="alert">
                           Invalid Email
                         </div>
+                        <div  *ngIf="email?.errors?.['emailAlreadyExists']" class="alert alert-danger" role="alert">
+                          Email Already Exists
+                        </div>
                       </div>
                     <!-- end name validation -->
 
