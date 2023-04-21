@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Subject, BehaviorSubject } from 'rxjs';
 import { Course } from 'src/app/model/course';
 import { Instructor } from 'src/app/model/instructor';
 import { CourseService } from 'src/app/services/course.service';
@@ -16,7 +15,7 @@ declare var $:any;
 })
 export class UpdateComponent implements OnInit {
 
-  @Input() updateData:any;
+  @Input() updateData:Course;
 
 
   instructors: Instructor[] = [];

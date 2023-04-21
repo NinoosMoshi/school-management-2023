@@ -20,6 +20,7 @@ export class CourseComponent implements OnInit {
 
   courses: Course[] = [];
   selectedCourse:Course = new Course;
+  selectedCourseEdit:Course = new Course;
 
 
   thePageNumber: number = 1;
@@ -113,7 +114,7 @@ export class CourseComponent implements OnInit {
 
   handleEditCourse(temp:Course){
     //  this.selectedCourse = Object.assign({}, temp);
-    this.selectedCourse = temp;
+    this.selectedCourseEdit = temp;
      this.updateComponent.showEditModal();
 
   }

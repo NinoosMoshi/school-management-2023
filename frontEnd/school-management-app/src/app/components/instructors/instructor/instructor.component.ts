@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Instructor } from 'src/app/model/instructor';
 import { DeleteInstructorComponent } from '../instructor-child/delete-instructor/delete-instructor.component';
 import { CreateInstructorComponent } from '../instructor-child/create-instructor/create-instructor.component';
+import { CoursesInstructorComponent } from '../instructor-child/courses-instructor/courses-instructor.component';
 
 
 @Component({
@@ -13,11 +14,15 @@ import { CreateInstructorComponent } from '../instructor-child/create-instructor
 })
 export class InstructorComponent implements OnInit {
 
-  @ViewChild(CreateInstructorComponent) createInstructorComponent:CreateInstructorComponent;
-  @ViewChild(DeleteInstructorComponent) deleteInstructorComponent:DeleteInstructorComponent;
+  @ViewChild(CreateInstructorComponent)  createInstructorComponent:CreateInstructorComponent;
+  @ViewChild(DeleteInstructorComponent)  deleteInstructorComponent:DeleteInstructorComponent;
+  @ViewChild(CoursesInstructorComponent) coursesInstructorComponent:CoursesInstructorComponent;
+
 
   instructors:Instructor[] = [];
   selectedInstructor:Instructor = new Instructor;
+
+  modalInstructor:Instructor = new Instructor();
 
   thePageNumber: number = 1;
   thePageSize: number = 5;
@@ -96,10 +101,6 @@ export class InstructorComponent implements OnInit {
 
 
 
-  handleEditInstructor(temp:Instructor){
-
-  }
-
 
   deleteInstructorTemp(){
     let itemIndex = this.instructors.findIndex(item => item.instructorId === this.selectedInstructor.instructorId);
@@ -113,6 +114,12 @@ export class InstructorComponent implements OnInit {
 
       }
     })
+  }
+
+
+  getCoursesModel(temp:Instructor){
+     this.modalInstructor = temp;
+     this.coursesInstructorComponent.showCoursesInstructorModal();
   }
 
 

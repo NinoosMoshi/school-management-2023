@@ -1,0 +1,54 @@
+<div class="modal fade" tabindex="-1" id="courseInstructorModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Courses</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+       <input type="text" [(ngModel)]="instructorObject.instructorId" >
+
+        <div class="container">
+          <div class="row">
+            <div class="table-wrapper">
+              <table class="table table-striped table-hover">
+                <thead>
+                   <tr>
+                    <th>Course ID</th>
+                    <th>Course Name</th>
+                    <th>Course Duration</th>
+                    <th>Course Description</th>
+                   </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let temp of courses">
+                    <td>{{temp.courseId}}</td>
+                    <td>{{temp.courseName}}</td>
+                    <td>{{temp.courseDuration}}</td>
+                    <td>{{temp.courseDescription}}</td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <th>Course ID</th>
+                    <th>Course Name</th>
+                    <th>Course Duration</th>
+                    <th>Course Description</th>
+                 </tr>
+                </tfoot>
+             </table>
+            </div>
+
+          </div> <!-- end row -->
+        </div>  <!-- end container -->
+
+      </div>
+      <div class="modal-footer">
+        <!--start pagination-->
+
+        <!--end pagination-->
+      </div>
+    </div>
+  </div>
+</div>

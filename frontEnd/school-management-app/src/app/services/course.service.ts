@@ -52,6 +52,13 @@ export class CourseService {
       }
 
 
+      // http://localhost:8082/instructors/{id}/courses?page=0&size=5
+      public getCoursesByInstructor(instructorId:number, page:number, size:number):Observable<GetResponse>{
+        return this.http.get<GetResponse>(`${environment.backendHost}/instructors/${instructorId}/courses?page=${page}&size=${size}`).pipe(
+          map(response => response)
+        )
+      }
+
 }
 
 

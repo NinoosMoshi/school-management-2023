@@ -16,6 +16,7 @@ import { UpdateComponent } from './components/courses/course-child/update/update
 import { UpdateInstructorComponent } from './components/instructors/instructor-child/update-instructor/update-instructor.component';
 import { DeleteInstructorComponent } from './components/instructors/instructor-child/delete-instructor/delete-instructor.component';
 import { CreateInstructorComponent } from './components/instructors/instructor-child/create-instructor/create-instructor.component';
+import { CoursesInstructorComponent } from './components/instructors/instructor-child/courses-instructor/courses-instructor.component';
 
 
 
@@ -32,6 +33,7 @@ import { CreateInstructorComponent } from './components/instructors/instructor-c
     UpdateInstructorComponent,
     DeleteInstructorComponent,
     CreateInstructorComponent,
+    CoursesInstructorComponent,
   ],
   imports: [
     BrowserModule,
